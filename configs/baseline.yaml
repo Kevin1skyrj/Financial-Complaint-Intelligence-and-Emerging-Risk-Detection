@@ -1,0 +1,18 @@
+project:
+  random_seed: 42
+
+data:
+  raw_path: data/raw/complaints.csv
+  text_column: Consumer complaint narrative
+  target_column: Product
+  date_column: Date received
+
+split:
+  test_size: 0.20
+
+model:
+  name: tfidf_logistic_regression
+  min_document_frequency: 3
+  max_features: 50000
+  class_weight: balanced
+

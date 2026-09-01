@@ -1,0 +1,10 @@
+pandas>=2.2,<3.0
+numpy>=1.26,<3.0
+scikit-learn>=1.5,<2.0
+pyyaml>=6.0,<7.0
+jupyterlab>=4.2,<5.0
+matplotlib>=3.9,<4.0
+seaborn>=0.13,<1.0
+pytest>=8.2,<9.0
+ruff>=0.6,<1.0
+
