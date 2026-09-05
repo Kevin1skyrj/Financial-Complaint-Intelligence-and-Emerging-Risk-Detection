@@ -251,6 +251,10 @@ Therefore, this project will describe patterns within submitted CFPB complaints.
 `-- requirements.txt
 ```
 
+## Learning and interview notes
+
+The [`notes/`](notes/README.md) folder documents the project in the order it is learned and implemented. It explains the reasoning behind each decision, alternatives, trade-offs, limitations, verified results, and interview questions. Start with [`00_project_overview.md`](notes/00_project_overview.md).
+
 ## Development roadmap
 
 - [x] Define the problem and intended users
