@@ -25,7 +25,7 @@ Each technical note will answer:
 | No. | File | Purpose | Status |
 |---|---|---|---|
 | 00 | [`00_project_overview.md`](00_project_overview.md) | What the project is, why it exists, how it helps, and its boundaries | Complete |
-| 01 | `01_problem_and_use_cases.md` | Stakeholders, use cases, requirements, and success criteria | Planned |
+| 01 | [`01_problem_and_use_cases.md`](01_problem_and_use_cases.md) | Stakeholders, use cases, requirements, and success criteria | Complete |
 | 02 | `02_system_architecture.md` | Components, data flow, inputs, outputs, and design decisions | Planned |
 | 03 | `03_technology_stack.md` | Every technology, why it is used, and possible alternatives | Planned |
 | 04 | `04_dataset_understanding.md` | CFPB source, fields, target labels, limitations, and data dictionary | Planned |
@@ -50,4 +50,3 @@ Each technical note will answer:
 - Keep dataset limitations and leakage risks visible.
 - Prefer clear explanations over memorised definitions.
 - Update the README and resume only after verified milestones.
-
