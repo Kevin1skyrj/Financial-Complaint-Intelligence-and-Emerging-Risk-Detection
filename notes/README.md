@@ -27,7 +27,7 @@ Each technical note will answer:
 | 00 | [`00_project_overview.md`](00_project_overview.md) | What the project is, why it exists, how it helps, and its boundaries | Complete |
 | 01 | [`01_problem_and_use_cases.md`](01_problem_and_use_cases.md) | Stakeholders, use cases, requirements, and success criteria | Complete |
 | 02 | [`02_system_architecture.md`](02_system_architecture.md) | Components, data flow, inputs, outputs, and design decisions | Complete |
-| 03 | `03_technology_stack.md` | Every technology, why it is used, and possible alternatives | Planned |
+| 03 | [`03_technology_stack.md`](03_technology_stack.md) | Every technology, why it is used, and possible alternatives | Complete |
 | 04 | `04_dataset_understanding.md` | CFPB source, fields, target labels, limitations, and data dictionary | Planned |
 | 05 | `05_data_cleaning_and_eda.md` | Data-quality checks, cleaning decisions, and exploratory analysis | Planned |
 | 06 | `06_text_preprocessing.md` | Preparing complaint narratives for machine learning | Planned |
