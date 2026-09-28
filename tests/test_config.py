@@ -9,7 +9,9 @@ def test_baseline_config_has_required_sections() -> None:
     config = load_config(Path("configs/baseline.yaml"))
 
     assert {"project", "data", "split", "model"}.issubset(config)
-    assert config["data"]["text_column"] == "Consumer complaint narrative"
+    assert config["data"]["text_column"] == "narrative"
+    assert config["data"]["target_column"] == "product"
+    assert config["data"]["prepared_path"] == "data/interim/narrative_complaints.csv"
     assert config["model"]["name"] == "tfidf_logistic_regression"
 
 

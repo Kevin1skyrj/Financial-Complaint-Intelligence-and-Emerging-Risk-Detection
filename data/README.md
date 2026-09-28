@@ -37,6 +37,15 @@ python -m complaint_intelligence.preparation
 
 This command excludes missing or blank narratives, normalizes output column names and date storage, preserves the narrative wording, audits exact duplicates through hashes, and writes only aggregate statistics to the JSON report. It does not deduplicate, preprocess language, split data, or train a model.
 
+Build the classification experiment's chronological and duplicate-safe datasets with:
+
+```powershell
+$env:PYTHONPATH = "src"
+python -m complaint_intelligence.splitting
+```
+
+The command uses the fixed date windows in `configs/baseline.yaml`, prevents exact narrative hashes from crossing splits, removes conflicting-label text and same-label repetitions, and records artifact hashes under `data/processed/classification/`. It leaves TF-IDF fitting and model training for the next milestone.
+
 ## Data layers
 
 ```text

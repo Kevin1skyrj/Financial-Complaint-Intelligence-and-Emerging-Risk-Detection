@@ -2,13 +2,21 @@ project:
   random_seed: 42
 
 data:
-  raw_path: data/raw/complaints.csv
-  text_column: Consumer complaint narrative
-  target_column: Product
-  date_column: Date received
+  prepared_path: data/interim/narrative_complaints.csv
+  processed_directory: data/processed/classification
+  split_report_path: data/processed/classification/split_report.json
+  text_column: narrative
+  target_column: product
+  date_column: date_received
+  id_column: complaint_id
 
 split:
-  test_size: 0.20
+  train_start: 2023-09-01
+  train_end: 2023-12-31
+  validation_start: 2024-01-01
+  validation_end: 2024-02-29
+  test_start: 2024-03-01
+  test_end: 2024-03-31
 
 model:
   name: tfidf_logistic_regression
