@@ -1,0 +1,16 @@
+source:
+  authority: Consumer Financial Protection Bureau
+  archive_page: https://www.consumerfinance.gov/foia-requests/foia-electronic-reading-room/cfpb-consumer-complaint-database-narratives-archive/
+  archive_url: https://files.consumerfinance.gov/f/documents/CCDB_Export_5_September_2023_through_March_2024.zip
+  archive_period: September 2023 through March 2024
+  expected_compressed_bytes: 100880669
+
+local:
+  archive_path: data/raw/CCDB_Export_5_September_2023_through_March_2024.zip
+  metadata_path: data/raw/snapshot_metadata.json
+
+download:
+  timeout_seconds: 120
+  chunk_bytes: 1048576
+  minimum_free_space_multiplier: 5
+

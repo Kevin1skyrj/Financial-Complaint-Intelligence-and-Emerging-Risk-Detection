@@ -28,7 +28,8 @@ Each technical note will answer:
 | 01 | [`01_problem_and_use_cases.md`](01_problem_and_use_cases.md) | Stakeholders, use cases, requirements, and success criteria | Complete |
 | 02 | [`02_system_architecture.md`](02_system_architecture.md) | Components, data flow, inputs, outputs, and design decisions | Complete |
 | 03 | [`03_technology_stack.md`](03_technology_stack.md) | Every technology, why it is used, and possible alternatives | Complete |
-| 04 | `04_dataset_understanding.md` | CFPB source, fields, target labels, limitations, and data dictionary | Planned |
+| 04 | [`04_dataset_understanding.md`](04_dataset_understanding.md) | CFPB source, fields, target labels, limitations, and data dictionary | Draft complete; review required |
+| 04A | [`04a_dataset_acquisition_plan.md`](04a_dataset_acquisition_plan.md) | Archive selection, provenance, storage, verification, and download procedure | Acquisition implemented; extraction pending |
 | 05 | `05_data_cleaning_and_eda.md` | Data-quality checks, cleaning decisions, and exploratory analysis | Planned |
 | 06 | `06_text_preprocessing.md` | Preparing complaint narratives for machine learning | Planned |
 | 07 | `07_baseline_model.md` | TF-IDF, Logistic Regression, training flow, and model assumptions | Planned |
