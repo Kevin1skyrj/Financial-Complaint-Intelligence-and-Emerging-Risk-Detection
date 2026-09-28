@@ -19,6 +19,15 @@ python -m complaint_intelligence.acquisition
 
 The command refuses silent overwrites. It streams into a temporary `.part` file, validates the expected byte count, tests ZIP integrity, rejects unsafe archive paths, calculates SHA-256, and writes `data/raw/snapshot_metadata.json`.
 
+After acquisition, safely extract and inspect the configured member with:
+
+```powershell
+$env:PYTHONPATH = "src"
+python -m complaint_intelligence.inspection
+```
+
+This command re-verifies the archive against its metadata, extracts through a temporary file, checks the exact uncompressed byte count, calculates the extracted CSV hash, validates encoding and delimiter, confirms required columns, and scans the CSV in chunks. It writes local metadata under `data/raw/` and the schema report under `data/interim/`; all generated data remains ignored by Git.
+
 ## Data layers
 
 ```text
@@ -42,6 +51,8 @@ The extraction and schema-audit milestone must verify:
 - company-response fields — retrospective context, not arrival-time model inputs.
 
 Exact archived column names must be inspected before transformation code depends on them.
+
+For the selected archive, the inspection has verified all five required fields. See `notes/04b_schema_inspection.md` for the measured schema and quality results.
 
 ## Rules
 

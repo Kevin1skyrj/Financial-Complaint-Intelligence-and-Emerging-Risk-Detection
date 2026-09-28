@@ -8,9 +8,24 @@ source:
 local:
   archive_path: data/raw/CCDB_Export_5_September_2023_through_March_2024.zip
   metadata_path: data/raw/snapshot_metadata.json
+  extracted_path: data/raw/CCDB_Export_5_September_2023_through_March_2024.csv
+  extraction_metadata_path: data/raw/extraction_metadata.json
+  schema_report_path: data/interim/schema_report.json
 
 download:
   timeout_seconds: 120
   chunk_bytes: 1048576
   minimum_free_space_multiplier: 5
+
+extraction:
+  member_name: CCDB_Export_5_September_2023_through_March_2024.csv
+  encoding: utf-8-sig
+  delimiter: ","
+  scan_chunk_rows: 50000
+  required_columns:
+    - Complaint ID
+    - Date received
+    - Product
+    - Issue
+    - Consumer complaint narrative
 

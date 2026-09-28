@@ -374,11 +374,11 @@ After the future download, this checklist must be completed:
 - [x] Archive member list recorded
 - [x] Archive member paths validated as safe
 - [x] Member uncompressed byte size recorded
-- [ ] File encoding inspected
-- [ ] Header and delimiter verified
-- [ ] Required fields confirmed
-- [ ] Sample rows parsed correctly
-- [ ] Advertised and actual date coverage compared
+- [x] File encoding inspected
+- [x] Header and delimiter verified
+- [x] Required fields confirmed
+- [x] First record structure parsed correctly without storing narrative text in the report
+- [x] Advertised and actual date coverage compared
 - [x] Raw paths confirmed ignored by Git
 - [x] Metadata file created with actual values
 - [x] No model or result claim made from unverified data
@@ -450,6 +450,8 @@ Implementation files:
 The generated ZIP and `snapshot_metadata.json` are stored under `data/raw/` and are excluded from Git.
 
 The acquisition and configuration test set passed all 11 tests before download.
+
+Safe extraction and schema inspection were subsequently completed. The verified results are documented separately in [`04b_schema_inspection.md`](04b_schema_inspection.md).
 
 ## 24. Completion checkpoint
 
