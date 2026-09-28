@@ -11,6 +11,8 @@ local:
   extracted_path: data/raw/CCDB_Export_5_September_2023_through_March_2024.csv
   extraction_metadata_path: data/raw/extraction_metadata.json
   schema_report_path: data/interim/schema_report.json
+  narrative_dataset_path: data/interim/narrative_complaints.csv
+  eda_report_path: data/interim/narrative_eda_report.json
 
 download:
   timeout_seconds: 120
@@ -28,4 +30,18 @@ extraction:
     - Product
     - Issue
     - Consumer complaint narrative
+
+preparation:
+  chunk_rows: 50000
+  output_columns:
+    - complaint_id
+    - date_received
+    - product
+    - sub_product
+    - issue
+    - sub_issue
+    - narrative
+    - company
+    - state
+    - submitted_via
 

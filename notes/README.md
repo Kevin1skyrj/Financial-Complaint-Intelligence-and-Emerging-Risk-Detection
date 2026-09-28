@@ -31,7 +31,7 @@ Each technical note will answer:
 | 04 | [`04_dataset_understanding.md`](04_dataset_understanding.md) | CFPB source, fields, target labels, limitations, and data dictionary | Draft complete; review required |
 | 04A | [`04a_dataset_acquisition_plan.md`](04a_dataset_acquisition_plan.md) | Archive selection, provenance, storage, verification, and download procedure | Acquisition and extraction completed |
 | 04B | [`04b_schema_inspection.md`](04b_schema_inspection.md) | Safe extraction, archived schema, row coverage, and first quality results | Implemented; results verified |
-| 05 | `05_data_cleaning_and_eda.md` | Data-quality checks, cleaning decisions, and exploratory analysis | Planned |
+| 05 | [`05_data_cleaning_and_eda.md`](05_data_cleaning_and_eda.md) | Data-quality checks, cleaning decisions, and exploratory analysis | Implemented; results verified |
 | 06 | `06_text_preprocessing.md` | Preparing complaint narratives for machine learning | Planned |
 | 07 | `07_baseline_model.md` | TF-IDF, Logistic Regression, training flow, and model assumptions | Planned |
 | 08 | `08_model_evaluation.md` | Metrics, imbalance, validation, error analysis, and calibration | Planned |

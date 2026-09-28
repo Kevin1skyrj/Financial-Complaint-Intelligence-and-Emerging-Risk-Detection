@@ -28,6 +28,15 @@ python -m complaint_intelligence.inspection
 
 This command re-verifies the archive against its metadata, extracts through a temporary file, checks the exact uncompressed byte count, calculates the extracted CSV hash, validates encoding and delimiter, confirms required columns, and scans the CSV in chunks. It writes local metadata under `data/raw/` and the schema report under `data/interim/`; all generated data remains ignored by Git.
 
+Prepare the narrative-only intermediate dataset and aggregate EDA report with:
+
+```powershell
+$env:PYTHONPATH = "src"
+python -m complaint_intelligence.preparation
+```
+
+This command excludes missing or blank narratives, normalizes output column names and date storage, preserves the narrative wording, audits exact duplicates through hashes, and writes only aggregate statistics to the JSON report. It does not deduplicate, preprocess language, split data, or train a model.
+
 ## Data layers
 
 ```text
