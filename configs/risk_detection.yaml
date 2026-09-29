@@ -1,0 +1,20 @@
+data:
+  assignments_path: data/processed/topics/complaint_topics.csv
+  clustering_report_path: data/processed/topics/clustering_report.json
+  weekly_metrics_path: data/processed/risk/weekly_topic_metrics.csv
+  alerts_path: data/processed/risk/emerging_risk_alerts.csv
+  report_path: data/processed/risk/risk_detection_report.json
+  date_column: date_received
+  topic_column: topic_id
+
+monitoring:
+  analysis_start: 2023-09-04
+  analysis_end: 2024-03-31
+  lookback_weeks: 8
+  minimum_history_weeks: 6
+  robust_z_threshold: 3.5
+  minimum_weekly_count: 100
+  minimum_share_increase: 0.001
+  scale_floor: 0.0001
+  persistence_window_weeks: 3
+  persistence_required_weeks: 2

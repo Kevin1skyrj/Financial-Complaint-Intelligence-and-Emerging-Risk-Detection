@@ -37,7 +37,7 @@ Each technical note will answer:
 | 08 | [`08_model_evaluation.md`](08_model_evaluation.md) | Metrics, imbalance, validation, error analysis, and calibration | Implemented; results verified |
 | 09 | [`09_semantic_search.md`](09_semantic_search.md) | Searchable TF-IDF similarity baseline, retrieval metrics, and semantic-upgrade boundary | Baseline implemented; neural embeddings remain planned |
 | 10 | [`10_topic_clustering.md`](10_topic_clustering.md) | Theme discovery, clustering choices, failed iteration, and cluster evaluation | Implemented; results verified |
-| 11 | `11_emerging_risk_detection.md` | Weekly topic signals, anomaly detection, and alert interpretation | Planned |
+| 11 | [`11_emerging_risk_detection.md`](11_emerging_risk_detection.md) | Prior-only weekly topic signals, persistence rules, and alert interpretation | Implemented; results verified |
 | 12 | `12_sql_and_powerbi.md` | Analytical tables, queries, dashboard design, and business views | Planned |
 | 13 | `13_rag_extension.md` | Evidence-grounded summaries, retrieval flow, and hallucination controls | Planned |
 | 14 | `14_limitations_and_responsible_ai.md` | Bias, privacy, misuse risks, monitoring, and human oversight | Planned |

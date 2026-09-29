@@ -80,6 +80,15 @@ python -m complaint_intelligence.clustering
 
 The clustering pipeline fits MiniBatch K-Means candidates on unique historical narratives, selects a cluster count using sampled cosine silhouette and a minimum-size guardrail, then assigns topic IDs to every narrative complaint. The assignment output preserves volume while excluding narrative text.
 
+Generate weekly topic metrics and persistent emerging-risk review signals with:
+
+```powershell
+$env:PYTHONPATH = "src"
+python -m complaint_intelligence.risk_detection
+```
+
+The detector compares each topic's weekly share only with its prior rolling history, applies minimum-volume and share-change thresholds, and requires repeated signals before creating an alert. Outputs are retrospective investigation aids, not proof of harm or misconduct.
+
 ## Data layers
 
 ```text
