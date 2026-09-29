@@ -36,7 +36,7 @@ Each technical note will answer:
 | 07 | [`07_baseline_model.md`](07_baseline_model.md) | TF-IDF, Logistic Regression, training flow, and model assumptions | Implemented; results verified |
 | 08 | [`08_model_evaluation.md`](08_model_evaluation.md) | Metrics, imbalance, validation, error analysis, and calibration | Implemented; results verified |
 | 09 | [`09_semantic_search.md`](09_semantic_search.md) | Searchable TF-IDF similarity baseline, retrieval metrics, and semantic-upgrade boundary | Baseline implemented; neural embeddings remain planned |
-| 10 | `10_topic_clustering.md` | Theme discovery, clustering choices, and cluster evaluation | Planned |
+| 10 | [`10_topic_clustering.md`](10_topic_clustering.md) | Theme discovery, clustering choices, failed iteration, and cluster evaluation | Implemented; results verified |
 | 11 | `11_emerging_risk_detection.md` | Weekly topic signals, anomaly detection, and alert interpretation | Planned |
 | 12 | `12_sql_and_powerbi.md` | Analytical tables, queries, dashboard design, and business views | Planned |
 | 13 | `13_rag_extension.md` | Evidence-grounded summaries, retrieval flow, and hallucination controls | Planned |

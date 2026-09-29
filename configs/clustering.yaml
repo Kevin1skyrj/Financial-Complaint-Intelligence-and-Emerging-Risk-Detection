@@ -1,0 +1,49 @@
+project:
+  random_seed: 42
+
+data:
+  prepared_path: data/interim/narrative_complaints.csv
+  train_path: data/processed/classification/train.csv
+  validation_path: data/processed/classification/validation.csv
+  assignments_path: data/processed/topics/complaint_topics.csv
+  text_column: narrative
+  id_column: complaint_id
+  date_column: date_received
+  retained_columns:
+    - complaint_id
+    - date_received
+    - product
+    - issue
+    - company
+    - state
+    - submitted_via
+
+clustering:
+  min_document_frequency: 10
+  max_document_frequency: 0.70
+  max_features: 30000
+  ngram_min: 1
+  ngram_max: 2
+  use_english_stop_words: true
+  excluded_tokens:
+    - xx
+    - xxx
+    - xxxx
+    - xxxxx
+    - xxxxxx
+    - xxxxxxx
+    - xxxxxxxx
+  candidate_clusters:
+    - 12
+    - 20
+    - 30
+  batch_size: 4096
+  max_iterations: 100
+  n_init: 5
+  evaluation_sample_size: 5000
+  minimum_cluster_fraction: 0.002
+  top_terms_per_cluster: 10
+  assignment_chunk_rows: 25000
+  model_path: models/tfidf_minibatch_kmeans.joblib
+  report_path: data/processed/topics/clustering_report.json
+  artifact_compression: 3

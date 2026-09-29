@@ -71,6 +71,15 @@ python -m complaint_intelligence.retrieval
 
 The retrieval index uses the fitted TF-IDF representation and historical train-plus-validation corpus. It stores sparse vectors and non-text metadata locally under `models/`, evaluates balanced held-out test queries, and keeps all generated artifacts ignored by Git.
 
+Discover complaint topics and create the full topic-assignment table with:
+
+```powershell
+$env:PYTHONPATH = "src"
+python -m complaint_intelligence.clustering
+```
+
+The clustering pipeline fits MiniBatch K-Means candidates on unique historical narratives, selects a cluster count using sampled cosine silhouette and a minimum-size guardrail, then assigns topic IDs to every narrative complaint. The assignment output preserves volume while excluding narrative text.
+
 ## Data layers
 
 ```text
