@@ -62,6 +62,15 @@ python -m complaint_intelligence.evaluation
 
 The training command selects regularization using validation macro F1 before evaluating the test period. The evaluation command reloads the saved pipeline and produces aggregate confusion and calibration results without exporting narratives or row-level predictions.
 
+Build and evaluate the similar-complaint retrieval baseline with:
+
+```powershell
+$env:PYTHONPATH = "src"
+python -m complaint_intelligence.retrieval
+```
+
+The retrieval index uses the fitted TF-IDF representation and historical train-plus-validation corpus. It stores sparse vectors and non-text metadata locally under `models/`, evaluates balanced held-out test queries, and keeps all generated artifacts ignored by Git.
+
 ## Data layers
 
 ```text
