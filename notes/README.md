@@ -33,8 +33,8 @@ Each technical note will answer:
 | 04B | [`04b_schema_inspection.md`](04b_schema_inspection.md) | Safe extraction, archived schema, row coverage, and first quality results | Implemented; results verified |
 | 05 | [`05_data_cleaning_and_eda.md`](05_data_cleaning_and_eda.md) | Data-quality checks, cleaning decisions, and exploratory analysis | Implemented; results verified |
 | 06 | [`06_text_preprocessing.md`](06_text_preprocessing.md) | Conservative text handling and leakage-safe chronological splits | Implemented; results verified |
-| 07 | `07_baseline_model.md` | TF-IDF, Logistic Regression, training flow, and model assumptions | Planned |
-| 08 | `08_model_evaluation.md` | Metrics, imbalance, validation, error analysis, and calibration | Planned |
+| 07 | [`07_baseline_model.md`](07_baseline_model.md) | TF-IDF, Logistic Regression, training flow, and model assumptions | Implemented; results verified |
+| 08 | [`08_model_evaluation.md`](08_model_evaluation.md) | Metrics, imbalance, validation, error analysis, and calibration | Implemented; results verified |
 | 09 | `09_semantic_search.md` | Embeddings, vector similarity, retrieval, and evaluation | Planned |
 | 10 | `10_topic_clustering.md` | Theme discovery, clustering choices, and cluster evaluation | Planned |
 | 11 | `11_emerging_risk_detection.md` | Weekly topic signals, anomaly detection, and alert interpretation | Planned |

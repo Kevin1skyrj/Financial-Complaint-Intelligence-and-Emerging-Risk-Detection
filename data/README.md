@@ -46,6 +46,22 @@ python -m complaint_intelligence.splitting
 
 The command uses the fixed date windows in `configs/baseline.yaml`, prevents exact narrative hashes from crossing splits, removes conflicting-label text and same-label repetitions, and records artifact hashes under `data/processed/classification/`. It leaves TF-IDF fitting and model training for the next milestone.
 
+Train the configured TF-IDF and Logistic Regression baseline with:
+
+```powershell
+$env:PYTHONPATH = "src"
+python -m complaint_intelligence.baseline
+```
+
+Run aggregate final-test error and calibration analysis with:
+
+```powershell
+$env:PYTHONPATH = "src"
+python -m complaint_intelligence.evaluation
+```
+
+The training command selects regularization using validation macro F1 before evaluating the test period. The evaluation command reloads the saved pipeline and produces aggregate confusion and calibration results without exporting narratives or row-level predictions.
+
 ## Data layers
 
 ```text

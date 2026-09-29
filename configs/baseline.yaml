@@ -9,6 +9,9 @@ data:
   target_column: product
   date_column: date_received
   id_column: complaint_id
+  train_path: data/processed/classification/train.csv
+  validation_path: data/processed/classification/validation.csv
+  test_path: data/processed/classification/test.csv
 
 split:
   train_start: 2023-09-01
@@ -23,4 +26,17 @@ model:
   min_document_frequency: 3
   max_features: 50000
   class_weight: balanced
+  ngram_min: 1
+  ngram_max: 2
+  sublinear_tf: true
+  max_iterations: 250
+  solver: lbfgs
+  candidates:
+    - c: 0.5
+    - c: 1.0
+  artifact_path: models/tfidf_logistic_regression.joblib
+  metrics_path: data/processed/classification/baseline_metrics.json
+  confusion_matrix_path: reports/figures/baseline_confusion_matrix.png
+  evaluation_report_path: data/processed/classification/evaluation_report.json
+  calibration_plot_path: reports/figures/baseline_calibration.png
 
