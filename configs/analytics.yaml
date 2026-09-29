@@ -1,0 +1,22 @@
+data:
+  topic_assignments_path: data/processed/topics/complaint_topics.csv
+  weekly_metrics_path: data/processed/risk/weekly_topic_metrics.csv
+  alerts_path: data/processed/risk/emerging_risk_alerts.csv
+  clustering_report_path: data/processed/topics/clustering_report.json
+  baseline_metrics_path: data/processed/classification/baseline_metrics.json
+  evaluation_report_path: data/processed/classification/evaluation_report.json
+
+analytics:
+  database_path: data/processed/analytics/complaint_intelligence.db
+  schema_path: sql/00_analytics_views.sql
+  export_directory: data/processed/powerbi
+  report_path: data/processed/analytics/analytics_report.json
+  exports:
+    vw_complaint_detail: complaints.csv
+    vw_topic_catalog: topics.csv
+    vw_weekly_topic_dashboard: weekly_topics.csv
+    vw_alert_dashboard: alerts.csv
+    vw_product_topic_summary: product_topics.csv
+    vw_weekly_overview: weekly_overview.csv
+    vw_model_summary: model_summary.csv
+    vw_model_class_performance: model_class_performance.csv

@@ -89,6 +89,15 @@ python -m complaint_intelligence.risk_detection
 
 The detector compares each topic's weekly share only with its prior rolling history, applies minimum-volume and share-change thresholds, and requires repeated signals before creating an alert. Outputs are retrospective investigation aids, not proof of harm or misconduct.
 
+Build the validated SQLite analytics warehouse and Power BI-ready exports with:
+
+```powershell
+$env:PYTHONPATH = "src"
+python -m complaint_intelligence.analytics
+```
+
+The analytics pipeline persists privacy-safe facts and dimensions, creates indexed SQL views, reconciles weekly monitoring counts to complaint assignments, and exports eight documented CSV tables. The interactive `.pbix` remains a separate manual and visual-validation milestone.
+
 ## Data layers
 
 ```text

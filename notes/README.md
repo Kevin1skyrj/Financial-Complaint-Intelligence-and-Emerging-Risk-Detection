@@ -38,7 +38,7 @@ Each technical note will answer:
 | 09 | [`09_semantic_search.md`](09_semantic_search.md) | Searchable TF-IDF similarity baseline, retrieval metrics, and semantic-upgrade boundary | Baseline implemented; neural embeddings remain planned |
 | 10 | [`10_topic_clustering.md`](10_topic_clustering.md) | Theme discovery, clustering choices, failed iteration, and cluster evaluation | Implemented; results verified |
 | 11 | [`11_emerging_risk_detection.md`](11_emerging_risk_detection.md) | Prior-only weekly topic signals, persistence rules, and alert interpretation | Implemented; results verified |
-| 12 | `12_sql_and_powerbi.md` | Analytical tables, queries, dashboard design, and business views | Planned |
+| 12 | [`12_sql_and_powerbi.md`](12_sql_and_powerbi.md) | Validated SQLite warehouse, SQL views, Power BI exports, and dashboard specification | Analytics implemented; `.pbix` pending |
 | 13 | `13_rag_extension.md` | Evidence-grounded summaries, retrieval flow, and hallucination controls | Planned |
 | 14 | `14_limitations_and_responsible_ai.md` | Bias, privacy, misuse risks, monitoring, and human oversight | Planned |
 | 15 | `15_interview_questions.md` | Project explanation and technical follow-up questions | Planned |
