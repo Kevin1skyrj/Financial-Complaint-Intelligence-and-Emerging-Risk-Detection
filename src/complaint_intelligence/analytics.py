@@ -15,7 +15,6 @@ import pandas as pd
 from complaint_intelligence.acquisition import sha256_file
 from complaint_intelligence.config import load_config
 
-
 PROHIBITED_COLUMN_NAMES = {"narrative", "consumer complaint narrative", "complaint_text"}
 
 
@@ -84,8 +83,7 @@ def ensure_privacy_safe_columns(frame: pd.DataFrame, table_name: str) -> None:
         normalized = column.lower()
         if (
             normalized in PROHIBITED_COLUMN_NAMES
-            or normalized.endswith("_narrative")
-            or normalized.endswith("_text")
+            or normalized.endswith(("_narrative", "_text"))
         ):
             prohibited.append(column)
     if prohibited:
@@ -199,26 +197,25 @@ def build_analytics(config: dict[str, Any], *, overwrite: bool = False) -> dict[
     temporary_database = database_path.with_suffix(database_path.suffix + ".part")
     temporary_database.unlink(missing_ok=True)
     try:
-        with closing(sqlite3.connect(temporary_database)) as connection:
-            with connection:
-                complaints.to_sql(
-                    "fact_complaint_topic", connection, index=False, if_exists="replace"
-                )
-                weekly.to_sql(
-                    "fact_weekly_topic_metric", connection, index=False, if_exists="replace"
-                )
-                alerts.to_sql("fact_risk_alert", connection, index=False, if_exists="replace")
-                topics.to_sql("dim_topic", connection, index=False, if_exists="replace")
-                model_summary.to_sql(
-                    "fact_model_summary", connection, index=False, if_exists="replace"
-                )
-                model_classes.to_sql(
-                    "fact_model_class_metric", connection, index=False, if_exists="replace"
-                )
-                connection.executescript(
-                    Path(analytics["schema_path"]).read_text(encoding="utf-8")
-                )
-                validation = validate_database(connection)
+        with closing(sqlite3.connect(temporary_database)) as connection, connection:
+            complaints.to_sql(
+                "fact_complaint_topic", connection, index=False, if_exists="replace"
+            )
+            weekly.to_sql(
+                "fact_weekly_topic_metric", connection, index=False, if_exists="replace"
+            )
+            alerts.to_sql("fact_risk_alert", connection, index=False, if_exists="replace")
+            topics.to_sql("dim_topic", connection, index=False, if_exists="replace")
+            model_summary.to_sql(
+                "fact_model_summary", connection, index=False, if_exists="replace"
+            )
+            model_classes.to_sql(
+                "fact_model_class_metric", connection, index=False, if_exists="replace"
+            )
+            connection.executescript(
+                Path(analytics["schema_path"]).read_text(encoding="utf-8")
+            )
+            validation = validate_database(connection)
         temporary_database.replace(database_path)
     except Exception:
         temporary_database.unlink(missing_ok=True)

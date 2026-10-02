@@ -3,11 +3,9 @@
 ## Milestone outcome
 
 This milestone creates a reproducible SQLite analytics warehouse, tested SQL views, and eight
-privacy-safe CSV exports for Power BI. It also defines the Power BI relationships, measures,
-pages, and refresh checks.
-
-The interactive `.pbix` file is not yet built. The implemented claim is **Power BI-ready analytics
-layer**, not a completed or deployed dashboard.
+privacy-reviewed CSV exports for Power BI. The later dashboard milestones used these outputs to
+build and validate the five-page local `.pbix` documented in
+[`12e_powerbi_completion_and_validation.md`](12e_powerbi_completion_and_validation.md).
 
 Implemented command:
 
@@ -133,8 +131,8 @@ Both cases were rerun through the complete validation suite.
 
 - SQLite is a local analytical artifact, not a production multi-user warehouse.
 - CSV imports do not provide incremental refresh or access control by themselves.
-- The `.pbix` dashboard has not yet been created or visually validated.
-- Power BI relationships and data types still require confirmation inside Desktop.
+- The PBIX is a local Desktop artifact, not a published or scheduled Power BI service report.
+- Refresh still requires regenerating local exports and refreshing the Desktop model.
 - Complaint ID and company metadata remain sensitive operational fields.
 - Dashboard usefulness has not been evaluated with actual analysts.
 
@@ -163,8 +161,8 @@ rows and silently inflate counts, so topics is used as a shared dimension.
 
 **Is the Power BI dashboard complete?**
 
-No. The warehouse, exports, model design, DAX measures, and page specification are complete. The
-interactive `.pbix`, visual QA, and publication remain a separate milestone.
+The five-page local PBIX and its visual QA are complete for version one. Power BI service
+publication, scheduled refresh, and audience permissions are separate future deployment work.
 
 **How did you ensure dashboard numbers are correct?**
 
@@ -172,9 +170,9 @@ I validated database integrity, uniqueness, alert reconciliation, weekly share t
 independent SQL comparison between assignment counts and monitoring counts. The final difference
 was zero.
 
-## Next milestone
+## Completion boundary
 
-The next planned work is either constructing and visually validating the `.pbix` in Power BI
-Desktop or proceeding to the optional evidence-grounded RAG extension. The dashboard should be
-completed before the final README claims it exists.
+The analytics and local Power BI milestones are complete. Optional future work includes dense
+embedding comparisons, service publication with an approved audience, scheduled refresh, and a
+carefully evaluated evidence-grounded summary layer.
 

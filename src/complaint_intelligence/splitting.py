@@ -14,7 +14,6 @@ import pandas as pd
 from complaint_intelligence.acquisition import sha256_file
 from complaint_intelligence.config import load_config
 
-
 SPLIT_NAMES = ("train", "validation", "test")
 
 

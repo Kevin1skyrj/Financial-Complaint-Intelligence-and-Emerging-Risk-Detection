@@ -1,62 +1,80 @@
-# Power BI Dashboard Build Guide
+# Power BI Report
 
-The SQL analytics layer and Power BI-ready CSV files are implemented and verified. A `.pbix`
-file has not yet been created, so the interactive dashboard must not be claimed as deployed.
+`Financial_Complaint_Intelligence.pbix` is the completed local reporting artifact for version one
+of this project. It was built in Power BI Desktop from eight generated analytics tables and
+contains five visually validated pages.
 
-## Generate the source tables
+The report is **not** published to the Power BI service. The PBIX can be opened locally after
+cloning the repository, while refresh requires regenerating the Git-ignored source exports.
 
-From the repository root:
+## Report pages
+
+| Page | Purpose |
+|---|---|
+| Complaint Overview | Monitor complaint volume, complete-week coverage, alert count, alerted topics, and severity mix |
+| Emerging Risk Alerts | Inspect each persistent signal and its exact topic-week complaint metadata |
+| Topic Monitoring | Compare a selected topic's weekly share with its prior-history baseline and detection evidence |
+| Product & Geography | Explore product, state, and issue volumes with a non-prevalence disclaimer |
+| Model Quality | Review aggregate and per-product classification performance and evaluation scope |
+
+## Verified headline values
+
+| Measure | Value |
+|---|---:|
+| Narrative complaints imported | 318,804 |
+| Complaints in 30 complete monitoring weeks | 315,623 |
+| Topics | 30 |
+| Candidate weekly signals | 30 |
+| Persistent alerts | 11 |
+| Alerted topics | 7 |
+| Classification accuracy | 0.8242 |
+| Balanced accuracy | 0.7578 |
+| Macro F1 | 0.6938 |
+| Expected calibration error | 0.0660 |
+
+## Data model
+
+The `topics` dimension filters the main fact-like tables through one-to-many, single-direction
+relationships:
+
+```text
+topics[topic_id] 1 -> * complaints[topic_id]
+topics[topic_id] 1 -> * weekly_topics[topic_id]
+topics[topic_id] 1 -> * alerts[topic_id]
+topics[topic_id] 1 -> * product_topics[topic_id]
+```
+
+The two model-evaluation tables and `weekly_overview` remain separate because they have different
+grains. Fact tables are not joined directly to each other, preventing row multiplication.
+
+## Source tables
+
+Run the analytics stage from the repository root:
 
 ```powershell
 $env:PYTHONPATH = "src"
 python -m complaint_intelligence.analytics
 ```
 
-Power BI sources are written to `data/processed/powerbi/`:
+The Git-ignored sources are written to `data/processed/powerbi/`:
 
-| File | Rows | Dashboard use |
+| File | Rows | Use |
 |---|---:|---|
-| `complaints.csv` | 318,804 | Complaint metadata drill-through |
-| `topics.csv` | 30 | Topic descriptions and dominant products |
-| `weekly_topics.csv` | 900 | Topic trends, baselines, scores, and alert flags |
-| `alerts.csv` | 11 | Persistent alert review table |
-| `product_topics.csv` | 244 | Product-to-topic composition |
-| `weekly_overview.csv` | 30 | Executive weekly volume and alert summary |
-| `model_summary.csv` | 1 | Final classification and calibration metrics |
-| `model_class_performance.csv` | 11 | Per-product precision, recall, and F1 |
+| `complaints.csv` | 318,804 | Structured complaint metadata and topic assignment |
+| `topics.csv` | 30 | Topic terms and descriptive product context |
+| `weekly_topics.csv` | 900 | Weekly count, share, baseline, score, persistence, and alert state |
+| `alerts.csv` | 11 | Persistent signals for investigation |
+| `product_topics.csv` | 244 | Topic composition within products |
+| `weekly_overview.csv` | 30 | Complete-week volume and alert summary |
+| `model_summary.csv` | 1 | Aggregate classification and calibration metrics |
+| `model_class_performance.csv` | 11 | Per-product precision, recall, F1, and support |
 
-These generated files are intentionally Git-ignored because complaint identifiers and analytical
-data should not be published with the source repository.
-
-## Import procedure
-
-1. Open Power BI Desktop.
-2. Choose **Get data -> Text/CSV**.
-3. Import all eight CSV files from `data/processed/powerbi/`.
-4. In Power Query, set `date_received` and `week_start` to Date.
-5. Set IDs and category columns to Text or Whole Number as appropriate.
-6. Set shares, scores, and model metrics to Decimal Number.
-7. Set `candidate_signal` and `alert` to True/False.
-8. Apply changes only after confirming the preview row counts match the table above.
-
-## Relationships
-
-Create these one-to-many relationships:
-
-```text
-topics[topic_id] 1 -> * complaints[topic_id]
-topics[topic_id] 1 -> * weekly_topics[topic_id]
-topics[topic_id] 1 -> * alerts[topic_id]
-```
-
-`product_topics` is already aggregated and can remain disconnected for its composition page, or
-be connected through a separately created product dimension. Do not directly join fact tables to
-each other on topic ID because that creates many-to-many duplication.
-
-## Suggested measures
+## Important measures
 
 ```DAX
 Narrative Complaints = DISTINCTCOUNT(complaints[complaint_id])
+
+Monitored Complaints = SUM(weekly_overview[narrative_complaints])
 
 Persistent Alerts = COUNTROWS(alerts)
 
@@ -65,71 +83,43 @@ Alerted Topics = DISTINCTCOUNT(alerts[topic_id])
 Average Topic Share = AVERAGE(weekly_topics[topic_share])
 
 Maximum Risk Score = MAX(weekly_topics[robust_z_score])
-
-Macro F1 = MAX(model_summary[macro_f1])
-
-Majority Macro F1 = MAX(model_summary[majority_macro_f1])
 ```
 
-## Recommended pages
+The Emerging Risk Alerts page also uses a visual-level helper measure so one selected alert filters
+the lower metadata table by both topic and week. Its implementation and reconciliation are
+documented in
+[`../notes/12d_powerbi_alert_investigation.md`](../notes/12d_powerbi_alert_investigation.md).
 
-### 1. Executive overview
+## Privacy review
 
-- cards: narrative complaints, persistent alerts, alerted topics, macro F1;
-- line chart: `weekly_overview[week_start]` against `narrative_complaints`;
-- column chart: alerts by week and severity;
-- slicers: date, product, topic, state.
+The PBIX embeds structured public CFPB metadata, public complaint IDs, and derived analytical
+fields. It does **not** import the consumer's free-text complaint narrative.
 
-### 2. Topic monitoring
+The report is privacy-reduced, not anonymous. Complaint IDs and company names remain traceability
+fields. They must not be interpreted as evidence of individual harm, company quality, misconduct,
+or market prevalence. Raw data, prepared narrative text, models, the SQLite warehouse, and source
+CSV exports remain excluded from Git.
 
-- topic selector using `topics[top_terms]`;
-- line chart with weekly topic share and baseline median;
-- columns for weekly topic count;
-- conditional table showing robust z-score, persistence count, and severity.
+## Refresh and QA checklist
 
-The baseline line is not an alert threshold by itself; all configured conditions and persistence
-must be satisfied.
+Before replacing or publishing the report:
 
-### 3. Alert investigation
+- confirm 318,804 complaint rows and unique complaint IDs;
+- confirm 30 topics, 900 topic-week rows, 11 alerts, and 11 product metric rows;
+- verify that weekly topic shares sum to approximately 100%;
+- verify the alert table and weekly alert flags both total 11;
+- confirm no imported column contains complaint narrative text;
+- check all five pages for clipped titles, illegible labels, empty visuals, and misleading totals;
+- test topic selection and alert-to-metadata filtering;
+- retain the non-prevalence and human-review disclaimers;
+- save, reopen, and check the exact PBIX before any distribution decision.
 
-- sortable alert table with week, topic, terms, count, share, change, score, and severity;
-- topic-to-product composition chart;
-- complaint metadata drill-through filtered by topic and week.
+## Completion and publication boundary
 
-Do not expose complaint narratives in the dashboard.
+The five-page Desktop report and local visual QA are complete. Power BI service publication,
+scheduled refresh, workspace access, and public sharing are not configured. `Publish to web`
+would create public exposure and must never be used without a separate explicit data and audience
+review.
 
-### 4. Product and geography
-
-- product volume and topic-composition charts;
-- state map only with adequate counts and a clear non-prevalence disclaimer;
-- issue and submission-channel breakdowns.
-
-Complaint counts must not be presented as institution-quality rankings or population prevalence.
-
-### 5. Model quality
-
-- cards for accuracy, balanced accuracy, macro F1, and calibration error;
-- clustered bars for per-product precision, recall, and F1;
-- comparison cards for model macro F1 versus majority-reference macro F1;
-- visible evaluation-scope text from `model_summary[evaluation_scope]`.
-
-## Refresh checks
-
-Before publishing or taking screenshots, confirm:
-
-- 318,804 complaint rows and unique complaint IDs;
-- 900 weekly topic rows;
-- 30 topic rows;
-- 11 alert rows;
-- weekly topic shares sum to approximately 100%;
-- model-class metrics contain 11 products;
-- no imported table contains complaint narrative text;
-- the archive period and refresh timestamp are visible.
-
-## Current completion boundary
-
-Complete: SQL warehouse, views, reconciliations, CSV exports, schema, measures, and page design.
-
-Not complete: interactive `.pbix` construction, rendered visual QA, dashboard screenshots, and
-publication. Those require Power BI Desktop and a separate verified milestone.
-
+For the full final validation record, see
+[`../notes/12e_powerbi_completion_and_validation.md`](../notes/12e_powerbi_completion_and_validation.md).

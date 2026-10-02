@@ -8,7 +8,6 @@ import pytest
 
 from complaint_intelligence.preparation import prepare_narratives
 
-
 COLUMNS = [
     "Complaint ID",
     "Date received",

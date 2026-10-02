@@ -12,7 +12,6 @@ from complaint_intelligence.baseline import (
     majority_baseline,
 )
 
-
 MODEL_CONFIG = {
     "min_document_frequency": 1,
     "max_features": 100,

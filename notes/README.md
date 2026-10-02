@@ -38,10 +38,14 @@ Each technical note will answer:
 | 09 | [`09_semantic_search.md`](09_semantic_search.md) | Searchable TF-IDF similarity baseline, retrieval metrics, and semantic-upgrade boundary | Baseline implemented; neural embeddings remain planned |
 | 10 | [`10_topic_clustering.md`](10_topic_clustering.md) | Theme discovery, clustering choices, failed iteration, and cluster evaluation | Implemented; results verified |
 | 11 | [`11_emerging_risk_detection.md`](11_emerging_risk_detection.md) | Prior-only weekly topic signals, persistence rules, and alert interpretation | Implemented; results verified |
-| 12 | [`12_sql_and_powerbi.md`](12_sql_and_powerbi.md) | Validated SQLite warehouse, SQL views, Power BI exports, and dashboard specification | Analytics implemented; `.pbix` pending |
-| 13 | `13_rag_extension.md` | Evidence-grounded summaries, retrieval flow, and hallucination controls | Planned |
-| 14 | `14_limitations_and_responsible_ai.md` | Bias, privacy, misuse risks, monitoring, and human oversight | Planned |
-| 15 | `15_interview_questions.md` | Project explanation and technical follow-up questions | Planned |
+| 12 | [`12_sql_and_powerbi.md`](12_sql_and_powerbi.md) | Validated SQLite warehouse, SQL views, and Power BI exports | Implemented; results verified |
+| 12B | [`12b_powerbi_complaint_overview.md`](12b_powerbi_complaint_overview.md) | Overview KPIs, trend, alert severity, and interaction checks | Implemented; results verified |
+| 12C | [`12c_powerbi_topic_monitoring.md`](12c_powerbi_topic_monitoring.md) | Topic selection, weekly signals, baselines, and evidence | Implemented; results verified |
+| 12D | [`12d_powerbi_alert_investigation.md`](12d_powerbi_alert_investigation.md) | Alert-to-complaint metadata filtering and reconciliation | Implemented; results verified |
+| 12E | [`12e_powerbi_completion_and_validation.md`](12e_powerbi_completion_and_validation.md) | Five-page report, privacy review, final QA, and completion boundary | Complete |
+| 13 | [`13_rag_extension.md`](13_rag_extension.md) | Gated future design for grounded summaries, citations, privacy, and evaluation | Design complete; implementation future |
+| 14 | [`14_limitations_and_responsible_ai.md`](14_limitations_and_responsible_ai.md) | Bias, privacy, misuse risks, deployment gaps, and human oversight | Complete |
+| 15 | [`15_interview_questions.md`](15_interview_questions.md) | Project explanation, verified numbers, and technical follow-up questions | Complete |
 
 ## Documentation rules
 

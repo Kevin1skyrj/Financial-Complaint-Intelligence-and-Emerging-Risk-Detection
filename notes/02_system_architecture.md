@@ -598,18 +598,19 @@ Rejected because classification, similarity retrieval, clustering, and anomaly d
 | `src/complaint_intelligence/` | Reusable implementation logic |
 | `models/` | Generated model artifacts, excluded from Git |
 | `sql/` | Reproducible analytical transformations |
-| `powerbi/` | Dashboard documentation and future assets |
+| `powerbi/` | Completed local PBIX and refresh/privacy documentation |
 | `reports/figures/` | Generated visual evidence |
 | `tests/` | Behaviour and validation checks |
 | `notes/` | Learning decisions and interview defense |
 
-The directories exist, but most pipeline components described in this note are planned rather than implemented.
+The version-one batch components described here are implemented and locally validated. Dense
+embeddings, RAG, service deployment, authentication, and scheduled refresh remain future scope.
 
 ## 23. Interview-ready explanation
 
 ### “Explain the architecture of your project.”
 
-> I designed the system as separate, testable pipelines over a reproducible CFPB data snapshot. Data first passes through schema validation and preparation. One branch uses TF-IDF and Logistic Regression to predict known complaint categories. A second branch creates sentence embeddings for semantic retrieval and theme clustering. Theme assignments are aggregated over time, and anomaly detection flags unusual growth. SQL and Power BI expose the verified outputs, while a later RAG layer only summarises retrieved evidence with citations.
+> I designed the system as separate, testable pipelines over a reproducible CFPB data snapshot. Data first passes through schema validation and preparation. One branch uses TF-IDF and Logistic Regression to predict known complaint categories. A second branch uses TF-IDF for similar-case retrieval and MiniBatch K-Means topic discovery. Topic assignments are aggregated weekly, and prior-only robust statistics flag persistent unusual growth. SQL and Power BI expose the verified outputs. Dense embeddings and a cited RAG layer remain future comparisons.
 
 ### “Why did you use separate components?”
 
@@ -621,7 +622,7 @@ The directories exist, but most pipeline components described in this note are p
 
 ### “How will you prevent data leakage?”
 
-> I will split data before fitting learned transformations, fit the TF-IDF vocabulary only on training records, exclude post-arrival outcome fields from arrival-time prediction, and ensure temporal alerts use only information available up to the evaluation date.
+> I split data before fitting learned transformations, fit the TF-IDF vocabulary only on approved historical records, isolated exact-text duplicates from later splits, excluded post-arrival outcome fields, and calculated every weekly alert from prior weeks only.
 
 ### “How will you reproduce a result?”
 
@@ -633,7 +634,9 @@ The directories exist, but most pipeline components described in this note are p
 
 ## 24. Completion checkpoint
 
-This architecture is a plan, not proof that the system works. Each stage must later be implemented, evaluated, and documented.
+The version-one architecture is supported by implemented stages, saved aggregate reports, 51
+automated tests, SQL reconciliation, and local Power BI QA. The documented metrics establish local
+experimental behavior, not production effectiveness or business impact.
 
 Before moving to the technology-stack note, I should be able to explain:
 

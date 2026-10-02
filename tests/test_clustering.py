@@ -15,7 +15,6 @@ from complaint_intelligence.clustering import (
     fit_candidates,
 )
 
-
 TEXTS = [
     "credit card fee charge",
     "card billing charge",

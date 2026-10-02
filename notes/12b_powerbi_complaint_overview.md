@@ -55,6 +55,9 @@ No date, product, or topic slicer was added to this page. The current model lack
 
 **Does an alert mean a financial institution did something wrong?** No. It indicates that a complaint theme met a historical-change and persistence rule and merits human review. The CFPB database is not representative of all consumers.
 
-## Remaining dashboard work
+## Later completion
 
-Finish the topic-monitoring, alert-investigation, product/geography, and model-quality views; add any shared dimensions needed for consistent filters; perform broader visual and reconciliation QA. Publishing or public sharing remains a separate user-approved decision. Main README updates are deferred until the project-final documentation pass.
+The remaining topic-monitoring, alert-investigation, product/geography, and model-quality pages
+were subsequently completed and checked. See
+[`12e_powerbi_completion_and_validation.md`](12e_powerbi_completion_and_validation.md) for the
+final report-wide QA and privacy boundary. Publishing remains a separate decision.

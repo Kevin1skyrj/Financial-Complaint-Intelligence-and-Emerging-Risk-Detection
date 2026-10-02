@@ -16,7 +16,6 @@ import pandas as pd
 from complaint_intelligence.acquisition import sha256_file
 from complaint_intelligence.config import load_config
 
-
 SOURCE_TO_OUTPUT = {
     "Complaint ID": "complaint_id",
     "Date received": "date_received",

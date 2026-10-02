@@ -14,7 +14,6 @@ from urllib.request import Request, urlopen
 
 from complaint_intelligence.config import load_config
 
-
 USER_AGENT = "financial-complaint-intelligence/0.1 (research project)"
 
 

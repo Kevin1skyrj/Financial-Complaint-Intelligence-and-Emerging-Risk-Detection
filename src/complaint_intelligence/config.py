@@ -5,7 +5,6 @@ from typing import Any
 
 import yaml
 
-
 DEFAULT_CONFIG_PATH = Path("configs/baseline.yaml")
 
 

@@ -41,26 +41,28 @@ A technology will not be added only because it appears in a job description. It 
 
 | Layer | Technology | Status | Intended role |
 |---|---|---|---|
-| Language | Python 3.10+ | Configured | Core project language |
-| Tabular processing | Pandas | Dependency added | Data loading, validation, cleaning, and aggregation |
-| Numerical operations | NumPy | Dependency added | Arrays, numerical transformations, and statistical calculations |
-| Classical ML and NLP | Scikit-learn | Dependency added | TF-IDF, Logistic Regression, metrics, pipelines, and initial anomaly methods |
-| Experiment interface | JupyterLab | Dependency added | EDA and documented experiments |
-| Visual analysis | Matplotlib, Seaborn | Dependencies added | EDA and model diagnostic charts |
-| Configuration | YAML with PyYAML | Configured | Versioned experiment settings |
-| Testing | Pytest | Configured | Automated validation of reusable code |
-| Static quality checks | Ruff | Configured | Fast linting and formatting checks |
+| Language | Python 3.10+ | Implemented | Core project language |
+| Tabular processing | Pandas | Implemented | Data loading, validation, cleaning, and aggregation |
+| Numerical operations | NumPy | Implemented | Arrays, numerical transformations, and statistical calculations |
+| Classical ML and NLP | Scikit-learn | Implemented | TF-IDF, Logistic Regression, metrics, retrieval, and clustering |
+| Experiment interface | JupyterLab | Available | Optional exploration environment; reproducible logic lives in modules |
+| Visual analysis | Matplotlib, Seaborn | Implemented | Model diagnostics and evaluation figures |
+| Configuration | YAML with PyYAML | Implemented | Versioned experiment settings |
+| Testing | Pytest | Implemented | 51 automated validation tests |
+| Static quality checks | Ruff | Implemented | Final repository lint validation |
 | Packaging | `pyproject.toml`, setuptools | Configured | Installable `src`-layout Python package |
 | Version control | Git and GitHub | In use | History, collaboration, and public project evidence |
 | Advanced NLP | Sentence Transformers / Hugging Face | Planned | Dense embeddings and later model comparison |
-| Similarity search | Exact cosine similarity first; vector index later | Planned | Retrieve semantically similar complaints |
-| Theme discovery | Scikit-learn clustering; alternatives evaluated later | Planned | Discover related complaint groups |
-| Emerging-risk analysis | Statistical baselines and anomaly detection | Planned | Flag unusual theme-volume changes |
-| Analytics | SQL | Starter query present | Reproducible reporting transformations |
-| Business reporting | Power BI | Planned | Interactive analyst dashboard |
+| Similarity search | Sparse TF-IDF cosine similarity | Baseline implemented | Retrieve lexically similar historical complaints |
+| Theme discovery | TF-IDF and MiniBatch K-Means | Implemented | Discover exploratory complaint groups |
+| Emerging-risk analysis | Prior-only robust statistics and persistence | Implemented | Flag unusual topic-share changes |
+| Analytics | SQLite and SQL | Implemented | Reproducible reporting transformations and reconciliation |
+| Business reporting | Power BI Desktop | Implemented locally | Five-page interactive analyst report |
 | Grounded language layer | RAG with minimal orchestration initially | Future | Source-linked analytical summaries |
 
-“Dependency added” means the library is declared for the project. It does not mean every planned feature using that library has been implemented.
+The status column distinguishes verified implementation from available dependencies and future
+comparisons. Dense neural NLP and the grounded language layer are not current implementation
+claims.
 
 ## 4. Python
 
@@ -466,11 +468,13 @@ TF-IDF relies heavily on shared vocabulary. Dense embeddings can place different
 
 No specific pretrained model will be selected until dataset language, size, hardware constraints, and evaluation design are understood.
 
-## 19. Similarity search and a future vector index
+## 19. Similarity search baseline and a future dense-vector index
 
 ### First approach
 
-For an initial evaluated sample, exact cosine similarity can compare a query embedding with stored complaint embeddings. This is simple and provides a reference result.
+The implemented baseline compares a query's sparse TF-IDF vector with the stored historical TF-IDF
+matrix using exact cosine similarity. This provides an inspectable reference result before any
+dense-embedding or approximate-index comparison.
 
 ### Why not select a vector database immediately?
 
@@ -582,7 +586,7 @@ Power BI is a business-intelligence platform for interactive data models, report
 - Present model quality and confidence information.
 - Allow drill-through from an alert to supporting records where appropriate.
 
-### Why it is planned
+### Why it is used
 
 The system's users need interpretable views, not only notebook outputs. Power BI also reflects how analytical results are often communicated in organisations.
 
@@ -592,7 +596,9 @@ Power BI should consume curated, documented tables. Complex data-cleaning or mod
 
 ### Alternative
 
-Tableau or a custom Streamlit dashboard could present similar information. Power BI is selected for the planned business-reporting layer, while a lightweight web interface may be considered later for model demonstration.
+Tableau or a custom Streamlit dashboard could present similar information. Power BI was used for
+the completed five-page local business-reporting layer, while a lightweight web interface remains
+an optional future model demonstration.
 
 ## 24. Retrieval-Augmented Generation
 
@@ -722,7 +728,7 @@ PyYAML config + Pytest + Ruff + Git support every stage.
 
 ### “How are you controlling dependency complexity?”
 
-> I add a dependency only when its milestone begins and its role is clear. The current environment covers the baseline workflow; advanced NLP, vector search, and RAG dependencies remain planned rather than installed prematurely.
+> I add a dependency only when its milestone begins and its role is clear. The current environment covers the verified sparse retrieval, clustering, monitoring, SQL, and reporting workflow. Dense neural NLP, approximate vector indexing, and RAG remain future dependencies until they have a justified evaluation plan.
 
 ## 29. Completion checkpoint
 

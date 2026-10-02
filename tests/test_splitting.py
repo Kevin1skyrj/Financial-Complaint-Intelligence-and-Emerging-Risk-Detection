@@ -8,7 +8,6 @@ import pytest
 
 from complaint_intelligence.splitting import build_classification_splits, validate_boundaries
 
-
 WINDOWS = {
     "train_start": "2023-09-01",
     "train_end": "2023-12-31",

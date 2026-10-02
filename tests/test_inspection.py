@@ -16,7 +16,6 @@ from complaint_intelligence.inspection import (
     verify_archive_against_metadata,
 )
 
-
 COLUMNS = [
     "Complaint ID",
     "Date received",

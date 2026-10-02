@@ -3,6 +3,7 @@ __pycache__/
 *.py[cod]
 .pytest_cache/
 .pytest-tmp/
+.pytest-*/
 .ruff_cache/
 .ipynb_checkpoints/
 .env

@@ -231,35 +231,34 @@ Therefore, the project can analyse patterns within submitted CFPB complaints, bu
 
 ## 12. Current status
 
-Completed so far:
+Version-one implementation is complete through:
 
-- project problem and scope defined;
-- initial repository structure created;
-- architecture and data contract drafted;
-- configuration loader and smoke tests added;
-- detailed public README written;
-- learning and interview-notes structure started.
+- verified CFPB archive acquisition, extraction, schema inspection, and EDA;
+- chronological, exact-duplicate-isolated classification splits;
+- TF-IDF and Logistic Regression training, class-level evaluation, and calibration analysis;
+- TF-IDF cosine-similarity retrieval with held-out proxy evaluation;
+- 30-topic MiniBatch K-Means clustering and full-dataset assignment;
+- prior-only weekly topic monitoring with persistence-based alerts;
+- a validated SQLite analytics layer, SQL views, and eight Power BI exports;
+- a five-page local Power BI report with privacy and visual QA;
+- 51 passing automated tests and a clean Ruff check.
 
-Not completed yet:
+Future extensions, not current claims:
 
-- dataset download and data audit;
-- exploratory data analysis;
-- text preprocessing experiments;
-- model training and evaluation;
-- semantic search and clustering;
-- emerging-risk detection;
-- SQL analytical pipeline;
-- Power BI dashboard;
-- RAG assistant;
-- deployment.
+- dense neural embeddings and human-labelled semantic-retrieval evaluation;
+- a production API, database, authentication, and scheduled refresh;
+- Power BI service publication;
+- an evidence-grounded RAG assistant;
+- production deployment and operational monitoring.
 
-No model metric, business impact, dashboard, or deployed feature should be claimed at this stage.
+The verified metrics and dashboard may be discussed with their documented evaluation scope and
+limitations. No production impact or deployed-service claim should be made.
 
 ## 13. Interview-ready explanation
 
 ### 30-second version
 
-> I am building a financial complaint intelligence system using public CFPB complaint data. The system is designed to classify complaint narratives, retrieve semantically similar historical cases, group complaints into themes, and monitor those themes over time to identify unusual increases. SQL and Power BI will support analysis and reporting, while a later RAG layer will generate summaries grounded in retrieved evidence. The system supports human analysts; it does not make lending decisions or treat an alert as proof of wrongdoing.
+> I built a financial complaint intelligence prototype using public CFPB data. It classifies complaint narratives, retrieves lexically similar historical cases, groups complaints into exploratory themes, and monitors weekly topic share for persistent unusual increases. SQL and a five-page Power BI report expose the evidence for human review. It does not make lending decisions or treat an alert as proof of wrongdoing.
 
 ### If asked, “Why did you choose this project?”
 

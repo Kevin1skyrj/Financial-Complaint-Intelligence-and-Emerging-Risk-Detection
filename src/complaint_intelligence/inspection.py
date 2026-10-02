@@ -6,7 +6,6 @@ import argparse
 import csv
 import hashlib
 import json
-import shutil
 import zipfile
 from collections import Counter
 from datetime import UTC, datetime
