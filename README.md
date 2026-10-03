@@ -87,9 +87,6 @@ pages: Complaint Overview, Emerging Risk Alerts, Topic Monitoring, Product & Geo
 Quality. Selecting an alert filters its supporting complaint **metadata** by topic and week. The
 report does not import the free-text complaint narrative.
 
-<details>
-<summary>View three more report pages</summary>
-
 ### Topic Monitoring
 
 ![Selected topic's weekly complaint share compared with its prior-history median](docs/images/topic-monitoring.png)
@@ -107,8 +104,6 @@ report does not import the free-text complaint narrative.
 ![Held-out aggregate metrics and per-product precision, recall, and F1](docs/images/model-quality.png)
 
 *Inspect aggregate and per-product classifier performance before using predictions.*
-
-</details>
 
 These are exported views of the local report. There is no Power BI Service deployment or scheduled
 refresh. See the [report guide](powerbi/README.md) for the model, measures, source tables, and
